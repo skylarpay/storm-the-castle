@@ -1,6 +1,6 @@
 # 3D-Game-Project
 - Name of game: Storm the Castle
-- Names of group members: Skylar Pay, Paris Cabatit, & Matthew Tabios
+- Names of group members: Skylar Pay, Paris Cabatit, Matthew Tabios, & Shelley Lam
 - Description of current target for the game
   - Knight character breaking into castle
   - Complete different tasks on the way to castle
@@ -14,6 +14,7 @@
   - Matt: System design (fight system, crafting system, movement system, etc.)
   - Paris: UI design (start screen, control page, etc.)
   - Skylar: Scene design (art assets, etc.)
+  - Shelley: ?
   - All: Level design
  
 **Note: Current working branch is feature/terrain-blockout
