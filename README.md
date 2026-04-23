@@ -14,7 +14,7 @@
   - Matt: System design (fight system, crafting system, movement system, etc.)
   - Paris: UI design (start screen, control page, etc.)
   - Skylar: Scene design (art assets, etc.)
-  - Shelley: ?
+  - Shelley: Animations (character, enemy, items, etc.)
   - All: Level design
  
 **Note: Current working branch is feature/terrain-blockout
