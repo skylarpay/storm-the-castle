@@ -1,0 +1,21 @@
+# Unity generated
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+
+# Visual Studio
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.userprefs
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
