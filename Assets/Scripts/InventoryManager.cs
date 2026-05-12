@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     private GameObject inventoryMenu;
     private bool menuActivated;
+    public ItemSlot[] itemSlot;
 
     public InputActionReference invToggle;
 
@@ -25,6 +26,18 @@ public class InventoryManager : MonoBehaviour
     private void OnDisable()
     {
         invToggle.action.started -= toggleInventory;
+    }
+    
+    public void AddItem(string itemName, int amount, Sprite icon)
+    {
+        for (int i = 0; i < itemSlot.Length; i++)
+        {
+            if (!itemSlot[i].isFull)
+            {
+                itemSlot[i].AddItem(itemName, amount, icon);
+                return;
+            }
+        }
     }
 
     private void toggleInventory(InputAction.CallbackContext ctx)
@@ -47,4 +60,6 @@ public class InventoryManager : MonoBehaviour
             playerActionMap.Enable();            
         }
     }
+
+
 }
