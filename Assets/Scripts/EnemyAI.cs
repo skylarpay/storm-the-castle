@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Attack")]
     public float attackCooldown = 1.2f;
+    public int attackDamage = 1;
+    public float damageDelay = 0.35f;
     float nextAttackTime;
 
     [Header("Facing")]
@@ -29,6 +31,7 @@ public class EnemyAI : MonoBehaviour
     float effectiveFacingYawOffsetDegrees;
 
     bool attacking = false;
+    PlayerHealth playerHealth;
 
     enum State { Idle, Chase, Attack }
     State state;
@@ -42,6 +45,10 @@ public class EnemyAI : MonoBehaviour
 
     void Awake()
     {
+        if (player != null)
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
         // Manual rotation in LateUpdate; leaving this on fights our facing logic and can look wrong with some rigs.
         if (agent != null)
             agent.updateRotation = false;
@@ -74,6 +81,12 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        if (playerHealth != null && playerHealth.IsDead())
+        {
+            Idle();
+            return;
+        }
+        
         float distance = Vector3.Distance(transform.position, player.position);
 
         // ----------------------------
@@ -155,12 +168,35 @@ public class EnemyAI : MonoBehaviour
         if (attacking)
             return;
 
+        if (Time.time < nextAttackTime)
+            return;
+
+        nextAttackTime = Time.time + attackCooldown;
+
         CancelInvoke();
         attacking = true;
         agent.isStopped = true;
 
         PlayAnim(ATTACK_START);
-        Invoke(nameof(PlayReturn), 0.4f); // match animation timing
+
+        Invoke(nameof(DamagePlayer), damageDelay);
+        Invoke(nameof(PlayReturn), 0.4f);
+    }
+
+    void DamagePlayer()
+    {
+        if (player == null)
+            return;
+
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        if (distance > attackRange + 0.5f)
+            return;
+
+        if (playerHealth != null && !playerHealth.IsDead())
+        {
+            bool damageApplied = playerHealth.TakeDamage(attackDamage);
+        }
     }
 
     void PlayReturn()
