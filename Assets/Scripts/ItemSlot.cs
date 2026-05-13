@@ -3,32 +3,29 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine.EventSystems;
+
 public class ItemSlot : MonoBehaviour
 {
-    //ITEM DATA//
-    public string itemName;
+    //SLOT DATA//
+    public bool isFull = false;
 
-    public int quantity;
-
-    public Sprite itemSprite;
-
-    public bool isFull;
+    public GameObject currentItem;
     
-    //ITEM SLOT//
-    [SerializeField] private TMP_Text quantityText;
-    [SerializeField] private Image itemImage;
+    public GameObject draggableItemPrefab;
 
     public void AddItem(string itemName, int amount, Sprite icon)
     {
-        this.itemName = itemName;
-        this.quantity = amount;
-        this.itemSprite = icon;
-        isFull = true;
-        
-        quantityText.text = quantity.ToString();
-        quantityText.enabled = true;
-        itemImage.sprite = itemSprite;
-        
+        Debug.Log("entered itemSlot Script");
+        if (currentItem == null)
+        {
+            GameObject item  = Instantiate(draggableItemPrefab, transform);
+            item.transform.SetParent(transform);
+            item.GetComponent<DraggableItem>().CreateDragItem(itemName, amount, icon);
+            currentItem = item;
+            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        }
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
