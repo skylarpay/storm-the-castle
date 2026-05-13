@@ -43,9 +43,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "EquipSword",
                     "type": "Button",
-                    "id": "ece4209c-c009-4a52-8713-9d1647d10904",
+                    "id": "3e8a338d-01fd-40ea-9205-578bb8bf9f23",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "146f96c1-5d1e-4cc5-af16-8e8e0d345a26",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -220,23 +229,34 @@
                 },
                 {
                     "name": "",
-                    "id": "c8fcd86e-dcfd-4f88-8e93-b638cdbf3320",
-                    "path": "<Gamepad>/leftTrigger",
+                    "id": "4e7555ef-2538-4be4-b9b1-a9dc0c3eade3",
+                    "path": "<Keyboard>/rightShift",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "KeyboardMouse",
                     "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "e5f3aa24-fac8-4b45-b958-d8fd164b85d4",
-                    "path": "<Keyboard>/f",
+                    "id": "b5660a93-fc86-4003-b978-93faf60061cb",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyboardMouse",
-                    "action": "Interact",
+                    "action": "EquipSword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05cf9d91-414b-48aa-a646-abddf207f067",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
