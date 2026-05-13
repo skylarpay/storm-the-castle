@@ -12,6 +12,8 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool equipSword;
+		public bool attack;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -43,8 +45,28 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+		public void OnEquipSword(InputValue value)
+		{
+			equipSword = value.isPressed;
+		}
+
+		public void OnAttack(InputValue value)
+		{
+			attack = value.isPressed;
+		}
 #endif
 
+		private void Update()
+		{
+			if (Keyboard.current.escapeKey.wasPressedThisFrame)
+			{
+				cursorLocked = !cursorLocked;
+				cursorInputForLook = cursorLocked;
+				SetCursorState(cursorLocked);
+				Cursor.visible = !cursorLocked;
+			}
+		}
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{
@@ -74,6 +96,7 @@ namespace StarterAssets
 		private void SetCursorState(bool newState)
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+			Cursor.visible = !newState;
 		}
 	}
 	

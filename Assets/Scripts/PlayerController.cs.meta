@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 526ed24552cf0d04684295be1f2c8308
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cam: {instanceID: 0}
+  - sword: {instanceID: 0}
+  - hitEffect: {instanceID: 0}
+  - swordSwing: {instanceID: 0}
+  - hitSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
