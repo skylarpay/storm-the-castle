@@ -34,7 +34,7 @@ public class Item : MonoBehaviour
         interact.action.Disable();
     }
     
-    private void OnTriggerExit(Collision collision) 
+    private void OnTriggerExit(Collider collision) 
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
