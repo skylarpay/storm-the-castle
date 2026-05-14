@@ -59,9 +59,12 @@ public class CraftingManager : MonoBehaviour
         Debug.Log("Crafting");
         if (!CanCraftRecipe(recipe)) return;
 
-        GameObject craftedItem = Instantiate(recipe.outputPrefab, outputPanel);
-        
+        DraggableItem craftedItem = Instantiate(recipe.outputPrefab, outputPanel);
         craftedItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        foreach (ItemSlot item in inputArray)
+        {
+            Destroy(item.gameObject);
+        }
     }
     
     

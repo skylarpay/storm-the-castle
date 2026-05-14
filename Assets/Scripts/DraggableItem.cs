@@ -35,7 +35,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         ItemSlot dropSlot = eventData.pointerEnter?.GetComponent<ItemSlot>();
         ItemSlot originalSlot = originalParent.GetComponent<ItemSlot>();
         
-
         if (dropSlot != null)
         {
             if (dropSlot.currentItem != null) //handles when a slot already has an item in it
@@ -47,8 +46,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             }
             else
             {
-                originalSlot.currentItem = null;
-                originalSlot.currentItemData = null;
+                // originalSlot.currentItem = null;
+                // originalSlot.currentItemData = null;
             }
             transform.SetParent(dropSlot.transform);
             dropSlot.currentItem = gameObject;

@@ -4,7 +4,7 @@ using UnityEngine;
 public class ItemRecipeSo : ScriptableObject
 {
     public string recipeName;
-    public GameObject outputPrefab;
+    public DraggableItem outputPrefab;
     public ItemTypeAndCount[] input;
     public ItemTypeAndCount[] output;
 }
