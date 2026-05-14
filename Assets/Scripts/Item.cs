@@ -3,9 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private string itemName;
-    [SerializeField] private int amount;
-    [SerializeField] private Sprite thisSprite;
+    [SerializeField] public ItemData itemData;
     [SerializeField] private InputActionReference interact;
 
     private bool playerInRange;
@@ -45,7 +43,7 @@ public class Item : MonoBehaviour
     {
         if (playerInRange && interact != null && interact.action.WasPressedThisFrame())
         {
-            inventoryManager.AddItem(itemName, amount, thisSprite);
+            inventoryManager.AddItem(itemData);
             Destroy(gameObject);
         }
     }
