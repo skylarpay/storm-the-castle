@@ -12,19 +12,20 @@ public class ItemSlot : MonoBehaviour
     public bool isFull = false;
 
     public GameObject currentItem;
+    public ItemData currentItemData;
     
     public GameObject draggableItemPrefab;
 
-    public void AddItem(string itemName, int amount, Sprite icon)
+    public void AddItem(ItemData itemData)
     {
         Debug.Log("entered itemSlot Script");
         if (currentItem == null)
         {
             GameObject item  = Instantiate(draggableItemPrefab, transform);
             item.transform.SetParent(transform);
-            item.GetComponent<DraggableItem>().CreateDragItem(itemName, amount, icon);
             currentItem = item;
-            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            currentItemData = itemData;
+            item.GetComponent<DraggableItem>().CreateDragItem(itemData);
         }
     }
     

@@ -4,6 +4,19 @@ using UnityEngine.InputSystem.Processors;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager instance;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     private GameObject inventoryMenu;
     private bool menuActivated;
     public ItemSlot[] itemSlot;
@@ -28,17 +41,21 @@ public class InventoryManager : MonoBehaviour
         invToggle.action.started -= toggleInventory;
     }
     
-    public void AddItem(string itemName, int amount, Sprite icon)
+    public void AddItem(ItemData itemData)
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (!itemSlot[i].isFull)
+            if (itemSlot[i].currentItem == null)
             {
-                itemSlot[i].AddItem(itemName, amount, icon);
+                Debug.Log("attempting to add");
+                itemSlot[i].AddItem(itemData);
+                Debug.Log("added");
                 return;
             }
         }
     }
+    
+    
 
     private void toggleInventory(InputAction.CallbackContext ctx)
     {
@@ -61,5 +78,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public bool isOn()
+    {
+        return menuActivated;
+    }
 
 }
